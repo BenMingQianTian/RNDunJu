@@ -3,8 +3,12 @@ import { View } from "react-native"
 import { BlockGrid } from './gong/BlockGrid'
 
 const Gong = () => {
-    return <View>
-        <BlockGrid blockSize={4} blockWidth={60} />
+    return <View style={{
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+    }}>
+        <BlockGrid blockSize={3} blockWidth={80} />
     </View>;
 }
 

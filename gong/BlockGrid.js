@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 
 class BlockGrid extends React.Component {
 
@@ -7,6 +7,7 @@ class BlockGrid extends React.Component {
         super(props)
         console.log(this.props.blockSize)
         let size = (this.props.blockSize) ? this.props.blockSize : 3
+        this.blockSize = size
         this.blockCount = size * size
         console.log(this.blockCount)
 
@@ -16,8 +17,9 @@ class BlockGrid extends React.Component {
 
         console.log("constructor BlockGrid")
 
-        this.state = {
-            dataSource: []
+        this.blocks = []
+        for (var i = 0; i < this.blockCount; i++) {
+            this.blocks.push({ key: i, label: i + "" })
         }
     }
 
@@ -29,27 +31,46 @@ class BlockGrid extends React.Component {
         console.log("componentWillUnmount")
     }
 
-    render(params) {
-        return <View style={{
-            flexDirection: 'row',
-            justifyContent: 'center',
-            flexWrap: 'wrap',
-        }}>
-            {Array.from(new Array(this.blockCount).keys()).map((index) => {
-                return this.blockItem(index, this.blockWidth)
-            })}
+    render() {
+        return <View style={{ borderWidth: 1, borderColor: 'red', }}>
+            <FlatList style={{ flexGrow: 0 }} data={this.blocks}
+                numColumns={this.blockSize}
+                renderItem={({ item }) => this.blockItem(item, this.blockWidth)}
+            />
         </View>
     }
 
-    blockItem(index, blockWidth) {
+    // render(params) {
+    //     return <View style={{
+    //         flexDirection: 'row',
+    //         justifyContent: 'center',
+    //         flexWrap: 'wrap',
+    //     }}>
+    //         {Array.from(new Array(this.blockCount).keys()).map((index) => {
+    //             return this.blockItem(index, this.blockWidth)
+    //         })}
+    //     </View>
+    // }
+
+    blockItem(item, blockWidth) {
         let blockStyle = {
             borderColor: 'red',
             borderWidth: 1,
             width: blockWidth,
             height: blockWidth,
         }
-        return <View style={blockStyle} key={index}></View>
+        return <View style={blockStyle} key={item.key}></View>
     }
+
+    // blockItem(index, blockWidth) {
+    //     let blockStyle = {
+    //         borderColor: 'red',
+    //         borderWidth: 1,
+    //         width: blockWidth,
+    //         height: blockWidth,
+    //     }
+    //     return <View style={blockStyle} key={index}></View>
+    // }
 }
 
 export {
