@@ -4,6 +4,6 @@
 
 import { AppRegistry } from 'react-native';
 import { name as appName } from './app.json';
-import Gong from './src/pages/Gong';
+import Welcome from './src/pages/Welcome';
 
-AppRegistry.registerComponent(appName, () => Gong);
+AppRegistry.registerComponent(appName, () => Welcome);
