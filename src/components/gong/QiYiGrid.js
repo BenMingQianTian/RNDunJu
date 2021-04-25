@@ -8,25 +8,28 @@ class QiYiGrid extends BaseGrid {
         super(props)
         console.log("constructor QiYiGrid")
 
-        this.blocks = []
+        this.blockYang = []
         qiYiYang.map((label, index) => {
-            this.blocks.push({ key: index, label: label })
+            this.blockYang.push({ key: index, label: label })
+        })
+        this.blockYin = []
+        qiYiYin.map((label, index) => {
+            this.blockYin.push({ key: index, label: label })
         })
     }
 
-    componentDidMount() {
-        console.log("componentDidMount")
-    }
-
-    componentWillUnmount() {
-        console.log("componentWillUnmount")
-    }
-
     render() {
-        return <FlatList style={{ flexGrow: 0 }} data={this.blocks}
-            numColumns={this.blockSize}
-            renderItem={({ item }) => this.blockItem(item, this.props.blockWidth)}
-        />
+        if (this.props.yangJu) {
+            return <FlatList style={{ flexGrow: 0 }} data={this.blockYang}
+                numColumns={this.blockSize}
+                renderItem={({ item }) => this.blockItem(item, this.props.blockWidth)}
+            />
+        } else {
+            return <FlatList style={{ flexGrow: 0 }} data={this.blockYin}
+                numColumns={this.blockSize}
+                renderItem={({ item }) => this.blockItem(item, this.props.blockWidth)}
+            />
+        }
     }
 
     blockItem(item, blockWidth) {

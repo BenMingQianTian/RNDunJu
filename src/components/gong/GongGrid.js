@@ -14,14 +14,6 @@ class GongGrid extends BaseGrid {
         })
     }
 
-    componentDidMount() {
-        console.log("componentDidMount")
-    }
-
-    componentWillUnmount() {
-        console.log("componentWillUnmount")
-    }
-
     render() {
         return <FlatList style={{ flexGrow: 0 }} data={this.blocks}
             numColumns={this.blockSize}
