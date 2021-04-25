@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from "react-native"
-import { BlockGrid } from './gong/BlockGrid'
+import { BlockGrid } from '../components/gong/BlockGrid'
 
 const Gong = () => {
     return <View style={{
