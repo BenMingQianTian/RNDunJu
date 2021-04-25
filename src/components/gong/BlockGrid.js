@@ -15,7 +15,7 @@ class BlockGrid extends BaseGrid {
     }
 
     render() {
-        return <View style={{ alignSelf:'center', borderWidth: 1, borderColor: 'red', }}>
+        return <View style={{ alignSelf: 'center', borderWidth: 1, borderColor: this.props.yangDun ? 'red' : 'green', }}>
             <FlatList style={{ flexGrow: 0 }} data={this.blocks}
                 numColumns={this.blockSize}
                 renderItem={({ item }) => this.blockItem(item, this.props.blockWidth)}
@@ -25,7 +25,7 @@ class BlockGrid extends BaseGrid {
 
     blockItem(item, blockWidth) {
         let blockStyle = {
-            borderColor: 'red',
+            borderColor: this.props.yangDun ? 'red' : 'green',
             borderWidth: 1,
             width: blockWidth,
             height: blockWidth,

@@ -16,7 +16,7 @@ class Gong extends React.Component {
             blockWidth: 80,
             showGong: false,
             showQiYi: true,
-            yangJu: true,
+            yangDun: true,
         }
     }
 
@@ -24,7 +24,7 @@ class Gong extends React.Component {
         return <View>
             <View style={{ marginTop: 40 }}>
                 <View style={{ alignSelf: 'center' }}>
-                    <BlockGrid blockWidth={this.state.blockWidth} />
+                    <BlockGrid yangDun={this.state.yangDun} blockWidth={this.state.blockWidth} />
                     <View style={{ position: 'absolute' }}>
                         {this.displayGong()}
                     </View>
@@ -45,12 +45,12 @@ class Gong extends React.Component {
                     <Text style={this.btnStyle}>{this.state.showGong ? 'hide' : 'show'}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => {
-                    this.setState({ yangJu: true })
+                    this.setState({ yangDun: true })
                 }}>
                     <Text style={this.btnStyle}>yang</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => {
-                    this.setState({ yangJu: false })
+                    this.setState({ yangDun: false })
                 }}>
                     <Text style={this.btnStyle}>yin</Text>
                 </TouchableOpacity>
@@ -66,7 +66,7 @@ class Gong extends React.Component {
     }
 
     displayQiYi() {
-        return <QiYiGrid yangJu={this.state.yangJu} blockWidth={this.state.blockWidth} />
+        return <QiYiGrid yangDun={this.state.yangDun} blockWidth={this.state.blockWidth} />
     }
 
     sizeButton(label, blockWidth) {

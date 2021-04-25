@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, FlatList } from 'react-native';
-import { qiYiYang, qiYiYin } from '../../utils/DataUtil';
+import { houTiangGongXu, qiYiYang, qiYiYin } from '../../utils/DataUtil';
 import { BaseGrid } from './BaseGrid'
 
 class QiYiGrid extends BaseGrid {
@@ -9,17 +9,17 @@ class QiYiGrid extends BaseGrid {
         console.log("constructor QiYiGrid")
 
         this.blockYang = []
-        qiYiYang.map((label, index) => {
-            this.blockYang.push({ key: index, label: label })
+        houTiangGongXu.map((pos, index) => {
+            this.blockYang[pos] = { key: pos, label: qiYiYang[index] }
         })
         this.blockYin = []
-        qiYiYin.map((label, index) => {
-            this.blockYin.push({ key: index, label: label })
+        houTiangGongXu.map((pos, index) => {
+            this.blockYin[pos] = { key: pos, label: qiYiYin[index] }
         })
     }
 
     render() {
-        if (this.props.yangJu) {
+        if (this.props.yangDun) {
             return <FlatList style={{ flexGrow: 0 }} data={this.blockYang}
                 numColumns={this.blockSize}
                 renderItem={({ item }) => this.blockItem(item, this.props.blockWidth)}
@@ -38,7 +38,8 @@ class QiYiGrid extends BaseGrid {
             height: blockWidth,
             textAlign: 'center',
             textAlignVertical: 'center',
-            color: 'gray',
+            color: 'black',
+            fontSize: 18,
         }
         return <Text key={item.key} style={labelStyle}>{item.label}</Text>
     }
