@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, FlatList } from 'react-native';
 
-class GongGrid extends React.Component {
+class BlockGrid extends React.Component {
 
     constructor(props) {
         super(props)
