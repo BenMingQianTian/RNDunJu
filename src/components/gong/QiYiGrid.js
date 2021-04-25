@@ -1,20 +1,11 @@
 import React from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { qiYiYang, qiYiYin } from '../../utils/DataUtil';
+import { BaseGrid } from './BaseGrid'
 
-class QiYiGrid extends React.Component {
+class QiYiGrid extends BaseGrid {
     constructor(props) {
         super(props)
-        console.log(this.props.blockSize)
-        let size = (this.props.blockSize) ? this.props.blockSize : 3
-        this.blockSize = size
-        this.blockCount = size * size
-        console.log(this.blockCount)
-
-        console.log(this.props.blockWidth)
-        this.blockWidth = (this.props.blockWidth) ? this.props.blockWidth : 60
-        console.log(this.blockWidth)
-
         console.log("constructor QiYiGrid")
 
         this.blocks = []
@@ -34,7 +25,7 @@ class QiYiGrid extends React.Component {
     render() {
         return <FlatList style={{ flexGrow: 0 }} data={this.blocks}
             numColumns={this.blockSize}
-            renderItem={({ item }) => this.blockItem(item, this.blockWidth)}
+            renderItem={({ item }) => this.blockItem(item, this.props.blockWidth)}
         />
     }
 

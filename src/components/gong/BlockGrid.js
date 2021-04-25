@@ -1,20 +1,11 @@
 import React from 'react';
 import { View, Text, FlatList } from 'react-native';
+import { BaseGrid } from './BaseGrid'
 
-class BlockGrid extends React.Component {
+class BlockGrid extends BaseGrid {
 
     constructor(props) {
         super(props)
-        console.log(this.props.blockSize)
-        let size = (this.props.blockSize) ? this.props.blockSize : 3
-        this.blockSize = size
-        this.blockCount = size * size
-        console.log(this.blockCount)
-
-        console.log(this.props.blockWidth)
-        this.blockWidth = (this.props.blockWidth) ? this.props.blockWidth : 60
-        console.log(this.blockWidth)
-
         console.log("constructor BlockGrid")
 
         this.blocks = []
@@ -35,7 +26,7 @@ class BlockGrid extends React.Component {
         return <View style={{ borderWidth: 1, borderColor: 'red', }}>
             <FlatList style={{ flexGrow: 0 }} data={this.blocks}
                 numColumns={this.blockSize}
-                renderItem={({ item }) => this.blockItem(item, this.blockWidth)}
+                renderItem={({ item }) => this.blockItem(item, this.props.blockWidth)}
             />
         </View>
     }
