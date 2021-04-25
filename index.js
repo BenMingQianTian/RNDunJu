@@ -1,9 +1,10 @@
 /**
  * @format
  */
-
-import { AppRegistry } from 'react-native';
 import { name as appName } from './app.json';
-import Welcome from './src/pages/Welcome';
+import { AppRegistry } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { AppStackNavigator } from './src/utils/AppNavigator';
 
-AppRegistry.registerComponent(appName, () => Welcome);
+const App = createAppContainer(AppStackNavigator);
+AppRegistry.registerComponent(appName, () => App);

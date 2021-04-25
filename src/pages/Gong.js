@@ -4,6 +4,7 @@ import { BlockGrid } from '../components/gong/BlockGrid'
 import { QiYiGrid } from '../components/gong/QiYiGrid'
 import { GongGrid } from '../components/gong/GongGrid'
 
+
 class Gong extends React.Component {
 
     btnStyle = {
@@ -78,4 +79,4 @@ class Gong extends React.Component {
     }
 }
 
-export default Gong;
+export { Gong }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import { AppRouters } from '../utils/AppNavigator';
 
 class Welcome extends React.Component {
 
@@ -37,6 +38,7 @@ class Welcome extends React.Component {
             <View style={{ marginTop: 40, alignSelf: 'center' }}>
                 <TouchableOpacity onPress={() => {
                     console.log('jump')
+                    this.props.navigation.navigate(AppRouters.Gong)
                 }}>
                     <View style={this.style.btnBg}>
                         <Text style={this.style.btnText}>开启奇门局</Text>
@@ -47,4 +49,4 @@ class Welcome extends React.Component {
     }
 }
 
-export default Welcome
+export { Welcome }
