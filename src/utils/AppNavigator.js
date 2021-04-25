@@ -1,6 +1,6 @@
 import { createStackNavigator } from 'react-navigation-stack';
-import { Welcome } from '../pages/Welcome';
-import { Gong } from '../pages/Gong';
+import { Welcome } from '../pages/Welcome/Welcome';
+import { Gong } from '../pages/Gong/Gong';
 
 const AppRouters = {
     Welcome: 'Welcome',

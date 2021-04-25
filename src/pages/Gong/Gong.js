@@ -1,15 +1,11 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from "react-native"
-import { BlockGrid } from '../components/gong/BlockGrid'
-import { QiYiGrid } from '../components/gong/QiYiGrid'
-import { GongGrid } from '../components/gong/GongGrid'
-
+import { BlockGrid } from '../../components/gong/BlockGrid'
+import { QiYiGrid } from '../../components/gong/QiYiGrid'
+import { GongGrid } from '../../components/gong/GongGrid'
+import { style } from './Style'
 
 class Gong extends React.Component {
-
-    btnStyle = {
-        fontSize: 18,
-    }
 
     static navigationOptions = {
         title: '阴阳九局',
@@ -47,19 +43,23 @@ class Gong extends React.Component {
                 <TouchableOpacity onPress={() => {
                     this.setState({ showGong: !this.state.showGong })
                 }}>
-                    <Text style={this.btnStyle}>{this.state.showGong ? '隐藏宫位' : '显示宫位'}</Text>
+                    <Text style={style.btnStyle}>{this.state.showGong ? '隐藏宫位' : '显示宫位'}</Text>
                 </TouchableOpacity>
             </View>
             <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', height: 54, alignItems: 'center', }}>
                 <TouchableOpacity onPress={() => {
                     this.setState({ yangDun: true })
                 }}>
-                    <Text style={this.btnStyle}>阳遁</Text>
+                    <View style={style.btnYangBg}>
+                        <Text style={style.btnYangText}>阳遁</Text>
+                    </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => {
                     this.setState({ yangDun: false })
                 }}>
-                    <Text style={this.btnStyle}>阴遁</Text>
+                    <View style={style.btnYinBg}>
+                        <Text style={style.btnYinText}>阴遁</Text>
+                    </View>
                 </TouchableOpacity>
             </View>
         </View >
@@ -80,7 +80,7 @@ class Gong extends React.Component {
         return <TouchableOpacity onPress={() => {
             this.setState({ blockWidth: blockWidth })
         }}>
-            <Text style={this.btnStyle}>{label}</Text>
+            <Text style={style.btnStyle}>{label}</Text>
         </TouchableOpacity>
     }
 }
