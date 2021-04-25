@@ -26,7 +26,7 @@ class GongGrid extends BaseGrid {
             width: blockWidth,
             height: blockWidth,
             textAlign: 'center',
-            textAlignVertical: 'center',
+            textAlignVertical: 'bottom',
             color: 'gray',
         }
         return <Text key={item.key} style={labelStyle}>{item.label}</Text>

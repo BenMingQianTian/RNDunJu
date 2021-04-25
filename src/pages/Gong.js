@@ -11,6 +11,10 @@ class Gong extends React.Component {
         fontSize: 18,
     }
 
+    static navigationOptions = {
+        title: '阴阳九局',
+    }
+
     constructor(props) {
         super(props)
         this.state = {
@@ -43,17 +47,19 @@ class Gong extends React.Component {
                 <TouchableOpacity onPress={() => {
                     this.setState({ showGong: !this.state.showGong })
                 }}>
-                    <Text style={this.btnStyle}>{this.state.showGong ? 'hide' : 'show'}</Text>
+                    <Text style={this.btnStyle}>{this.state.showGong ? '隐藏宫位' : '显示宫位'}</Text>
                 </TouchableOpacity>
+            </View>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', height: 54, alignItems: 'center', }}>
                 <TouchableOpacity onPress={() => {
                     this.setState({ yangDun: true })
                 }}>
-                    <Text style={this.btnStyle}>yang</Text>
+                    <Text style={this.btnStyle}>阳遁</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => {
                     this.setState({ yangDun: false })
                 }}>
-                    <Text style={this.btnStyle}>yin</Text>
+                    <Text style={this.btnStyle}>阴遁</Text>
                 </TouchableOpacity>
             </View>
         </View >
