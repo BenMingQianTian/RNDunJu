@@ -33,14 +33,9 @@ class Welcome extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            autoScroll: true,
-        }
-        this.scrollY = new Animated.Value(0)
-    }
-
-    componentDidMount() {
         this.autoScroll = true
+        this.scrollY = new Animated.Value(0)
+        this.bottomY = new Animated.Value(0)
     }
 
     autoReader() {
@@ -58,6 +53,28 @@ class Welcome extends React.Component {
             if (this.autoScroll) {
                 this.autoReader()
             }
+        })
+    }
+
+    stopAutoReader() {
+        this.autoScroll = false
+        this.scrollTimeing.stop()
+    }
+
+    hideBottom(callback) {
+        this.bottomY.setValue(0)
+        this.bottomTimeing = Animated.timing(
+            this.bottomY,
+            {
+                toValue: 100,
+                duration: 1000,
+                delay: 200,
+                useNativeDriver: true
+            }
+        )
+        this.bottomTimeing.start(() => {
+            this.bottomY.setValue(0)
+            callback()
         })
     }
 
@@ -122,15 +139,18 @@ class Welcome extends React.Component {
                         </View>
                     </Animated.View>
                 </TouchableHighlight>
-                <View style={{ flex: 0, height: 100, justifyContent: 'center', backgroundColor: 'cornflowerblue' }}>
+                <Animated.View style={{ flex: 0, height: 100, justifyContent: 'center', backgroundColor: 'cornflowerblue', transform: [{ translateY: this.bottomY }] }}>
                     <TouchableOpacity style={{ alignSelf: 'center' }} onPress={() => {
-                        this.props.navigation.navigate(AppRouters.Gong)
+                        this.stopAutoReader()
+                        this.hideBottom(() => {
+                            this.props.navigation.navigate(AppRouters.Gong)
+                        })
                     }}>
                         <View style={this.style.btnBg}>
                             <Text style={this.style.btnText}>开启奇门局</Text>
                         </View>
                     </TouchableOpacity>
-                </View>
+                </Animated.View>
             </View>
         </ImageBackground>
     }
