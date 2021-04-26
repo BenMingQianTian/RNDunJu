@@ -1,6 +1,20 @@
 const style = {
+    juTitleYang: {
+        fontSize: 24,
+        color: 'red',
+    },
+    juTitleYin: {
+        fontSize: 24,
+        color: 'green',
+    },
     btnStyle: {
         fontSize: 18,
+    },
+    btnGongWeiBg: {
+        borderColor: 'black',
+        borderWidth: 1,
+        paddingHorizontal: 8,
+        paddingVertical: 4,
     },
     btnYangBg: {
         borderColor: 'red',
