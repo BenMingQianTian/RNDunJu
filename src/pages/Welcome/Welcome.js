@@ -30,11 +30,37 @@ class Welcome extends React.Component {
         title: '烟波钓叟歌',
     }
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            autoScroll: true,
+            scrollY: 0,
+        }
+    }
+
+    componentDidMount() {
+        this.scrollTimer = setInterval(() => {
+            if (this.scrollView != null) {
+                const y = this.state.scrollY + 50
+                this.state = {
+                    scrollY: y,
+                }
+                this.scrollView.scrollTo({ x: 0, y: y, animated: true })
+            }
+        }, 1000)
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.scrollTimer)
+    }
+
     render() {
         return <ImageBackground style={{ flex: 1 }} source={require('../../../static/images/qimen.jpeg')} >
             <View style={{ flexDirection: 'column', flex: 1 }}>
-                <ScrollView style={{ flex: 1 }}>
+                <ScrollView ref={(ref) => { this.scrollView = ref }}
+                    style={{ flex: 1 }}>
                     <View style={{ alignSelf: 'center' }}>
+                        <View style={{ height: 400, }} />
                         <View style={this.style.segment}>
                             <Text style={this.style.content}>阴阳顺逆妙难穷，二至还归一九宫</Text>
                             <Text style={this.style.content}>若能了达阴阳理，天地都在一掌中</Text>
@@ -71,6 +97,7 @@ class Welcome extends React.Component {
                             <Text style={this.style.content}>六甲元号六仪名，三奇即是乙丙丁</Text>
                             <Text style={this.style.content}>阳遁顺仪奇逆布，阴遁逆仪奇顺行</Text>
                         </View>
+                        <View style={{ height: 400, }} />
                     </View>
                 </ScrollView>
                 <View style={{ alignSelf: 'center', height: 100, justifyContent: 'center' }}>
