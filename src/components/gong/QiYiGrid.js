@@ -39,6 +39,13 @@ class QiYiGrid extends BaseGrid {
             textAlignVertical: 'center',
             color: 'black',
             fontSize: 18,
+            ...Platform.select(
+                {
+                    ios: {
+                        lineHeight: blockWidth,
+                    }
+                }
+            )
         }
         return <Text key={item.key} style={labelStyle}>{item.label}</Text>
     }
